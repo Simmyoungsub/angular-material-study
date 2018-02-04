@@ -1,0 +1,30 @@
+<div class="row">
+  <form>
+    <table class="example-full-width" cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="name" [(ngModel)]="item.name" [ngModelOptions]="{standalone: true}">
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="example-full-width">
+            <mat-select placeholder="time food" [(ngModel)]="item.time" [ngModelOptions]="{standalone: true}" [(value)]="selected">
+              <mat-option *ngFor="let time of times" [value]="time">
+                {{ time }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="age" type="number" [(ngModel)]="item.age" [ngModelOptions]="{standalone: true}">
+          </mat-form-field>
+        </td>
+        <td>
+          <button mat-raised-button color="primary" (click)="addItem()">add</button>
+        </td>
+      </tr>
+    </table>
+  </form>
+</div>

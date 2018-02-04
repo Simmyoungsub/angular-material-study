@@ -5,6 +5,13 @@ module.exports = function (config) {
   config.set({
     basePath: '',
     frameworks: ['jasmine', '@angular/cli'],
+    files: [
+      {
+        pattern: 'node_modules/ngx-bootstrap/bundles/ngx-bootstrap.umd.js',
+        included: false,
+        watched: false
+      }
+    ],
     plugins: [
       require('karma-jasmine'),
       require('karma-chrome-launcher'),
