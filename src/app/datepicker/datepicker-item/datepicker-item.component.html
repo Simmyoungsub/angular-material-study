@@ -1,0 +1,10 @@
+<mat-form-field>
+  <input
+    matInput
+    [matDatepicker]="picker"
+    [formControl]="date"
+    placeholder="Choose a date">
+  <mat-error *ngIf="validator">포맷 오류입니다.</mat-error>
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
