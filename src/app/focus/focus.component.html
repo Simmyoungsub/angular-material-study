@@ -1,0 +1,14 @@
+<input type="text" placeholder="Test" (click)="onShow()" (focusout)="onHide()">
+<div #pop class="popup" (focusin)="focusin($event)" (focusout)="onClose()" [ngStyle]="{display: (disFocus || !isClose) || isShow ? 'block' : 'none'}">
+  <input type="number">
+</div>
+<button (click)="toggle()">toggleButton</button>
+<div>
+  isShow: {{isShow}}
+</div>
+<div>
+  divFocus: {{divFocus}}
+</div>
+<div>
+  isClose: {{isClose}}
+</div>

@@ -38,9 +38,21 @@ export class ChildComponent implements OnInit, OnDestroy {
     this.bsValue = new Date();
     const colunms = [
       {
+        headerName: '',
+        field: 'chk',
+        checkboxSelection: (
+          (params) => {
+            // console.log(params);
+            // console.log(params.data);
+            // console.log(params.data.state === 'wait');
+            return params.data.state === 'wait';
+          }
+        ),
+        width: 40
+      },
+      {
         headerName: 'name',
-        field: 'name',
-        checkboxSelection: true
+        field: 'name'
       },
       {
         headerName: 'time',
@@ -55,6 +67,10 @@ export class ChildComponent implements OnInit, OnDestroy {
         headerName: 'age',
         field: 'age',
         cellEditor: 'agPopupTextCellEditor'
+      },
+      {
+        headerName: 'state',
+        field: 'state',
       }
     ];
     this.columnDefs = colunms;
@@ -63,12 +79,26 @@ export class ChildComponent implements OnInit, OnDestroy {
       {
         'name': '홍길동',
         'time': '08:30',
-        'age': 10
+        'age': 10,
+        'state': 'wait'
+      },
+      {
+        'name': '홍길동',
+        'time': '08:30',
+        'age': 10,
+        'state': 'wait'
+      },
+      {
+        'name': '홍길동',
+        'time': '08:30',
+        'age': 10,
+        'state': 'wait'
       },
       {
         'name': '둘리',
         'time': '08:30',
-        'age': 5
+        'age': 5,
+        'state': 'success'
       }
     ];
     this.defaultColDef = { editable: true };
@@ -135,6 +165,19 @@ export class ChildComponent implements OnInit, OnDestroy {
   deleteRows() {
     console.log('call delete');
     this.getSelectionRows();
+  }
+
+  rowSelected(event) {
+    if(event.node.isSelected()) {
+      console.log('rowSelected', event);
+      if(event.data.state !== 'wait') {
+        event.node.setSelected(false, false);
+      }
+    }
+  }
+
+  selectionChanged(event) {
+    // console.log('selectionChanged', event);
   }
 
   ngOnDestroy() {
